@@ -10,6 +10,15 @@ const createProject = async (req, res) => {
   }
 };
 
+/**
+ * TODO:
+ *    EDIT project
+ *       ADD collaborators
+ *       DELETE collaborators
+ *    DELETE project
+ *    LIST projects
+ */
+
 module.exports = {
   createProject,
 };

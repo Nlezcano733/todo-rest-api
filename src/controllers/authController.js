@@ -46,6 +46,12 @@ const getProfile = async (req, res) => {
   }
 };
 
+/**
+ * TODO:
+ *    EDIT profile
+ *    DELETE profile
+ */
+
 const signInController = async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
@@ -83,11 +89,3 @@ module.exports = {
   getProfile,
   logout,
 };
-
-/**
- * Data:
- * email: nlezcano733@gmail.com
- * pass: admin2021
- * username: nlezcano
- * token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjVhODMxZDNhODhhMzBjZmE3ZTc3ZCIsImlhdCI6MTY0MzQ4OTMyOSwiZXhwIjoxNjQzNDk2NTI5fQ.Br3f9zmpo2Rk6qkUYRFTkWWPMCVYe-EqYPTLlb3jL1c
- */

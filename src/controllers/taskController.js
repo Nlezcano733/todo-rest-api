@@ -43,6 +43,13 @@ const updateTask = async (req, res) => {
   }
 };
 
+/**
+ * TODO:
+ *    EDIT task:
+ *      ADD assign_to
+ *      DELETE assign_to
+ */
+
 module.exports = {
   createTask,
   listTasks,
