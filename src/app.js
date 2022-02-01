@@ -23,10 +23,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Routes
-app.use("/api/auth", authRoute);
-app.use("/api/user", userRoute);
-app.use("/api/tasks", taskRoute);
-app.use("/api/project", projectRouter);
+app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/user", userRoute);
+app.use("/api/v1/tasks", taskRoute);
+app.use("/api/v1/project", projectRouter);
 
 // Start
 app.listen(app.get("port"), () => {

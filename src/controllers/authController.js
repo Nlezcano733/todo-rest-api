@@ -1,5 +1,6 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/userModel");
+const { ErrorHandler } = require("../utils/ErrorHandler");
 const dotenv = require("dotenv");
 
 dotenv.config();
@@ -41,16 +42,33 @@ const getProfile = async (req, res) => {
 
     res.status(200).json(user);
   } catch (e) {
-    console.error(e.message);
-    res.status(400).json({ message: "Error in request" });
+    ErrorHandler(res, e)
   }
 };
 
-/**
- * TODO:
- *    EDIT profile
- *    DELETE profile
- */
+const editProfile = async (req, res) => {
+  const userId = req.headers["uid"];
+  try {
+    const user = await User.findById({ _id: userId });
+    if (!user) return res.status(404).json({ message: "No user found" });
+
+    const newProfile = await User.replaceOne({ _id: userId }, req.body);
+    res.status(200).json(newProfile);
+  } catch (e) {
+    ErrorHandler(res, e)
+  }
+}
+
+const deleteProfile = async (req, res) => {
+  try {
+    const user = req.headers["uid"];
+    await User.deleteOne({ _id: user });
+
+    logout();
+  } catch (e) {
+    ErrorHandler(res, e)
+  }
+}
 
 const signInController = async (req, res) => {
   try {
@@ -74,8 +92,7 @@ const signInController = async (req, res) => {
 
     res.status(200).json({ auth: true, token });
   } catch (e) {
-    console.error(e.message);
-    res.status(400).json({ message: "Error in request" });
+    ErrorHandler(res, e)
   }
 };
 
@@ -87,5 +104,7 @@ module.exports = {
   signUpController,
   signInController,
   getProfile,
+  editProfile,
+  deleteProfile,
   logout,
 };

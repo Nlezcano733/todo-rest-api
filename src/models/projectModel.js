@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const projectSchema = new mongoose.Schema(
   {
     project_name: { type: String, required: true },
-    administrator: { type: String, required: true, unique: true },
+    administrator: { type: String, required: true, unique: false },
     collaborators: { type: [String], default: [] },
     status: { type: String, default: "not_started" },
   },

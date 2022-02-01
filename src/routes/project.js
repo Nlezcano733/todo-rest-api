@@ -1,9 +1,18 @@
 const { Router } = require("express");
 const verifyToken = require("../middlewares/verifyToken");
-const { createProject } = require("../controllers/projectController");
+const {
+  createProject,
+  listProjects,
+  updateProject,
+  deleteProject
+} = require("../controllers/projectController");
 
 const router = Router();
 
-router.post("/", verifyToken, createProject);
+router.get('/', verifyToken, listProjects)
+router.post('/', verifyToken, createProject);
+router.patch('/:id', verifyToken, updateProject);
+router.delete('/:id', verifyToken, deleteProject)
+
 
 module.exports = router;

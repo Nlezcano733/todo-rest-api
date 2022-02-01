@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node src/app.js",
-    "dev": "nodemon"
+    "start": "NODE_ENV=production node src/app.js",
+    "dev": "NODE_ENV=development nodemon",
+    "test": "NODE_ENV=test jest --verbose --silent",
+    "test:watch": "npm run test -- --watch"
   },
   "keywords": [],
   "author": "",
@@ -18,7 +20,9 @@
     "mongoose": "^6.1.8"
   },
   "devDependencies": {
+    "jest": "^27.4.7",
     "morgan": "^1.10.0",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.2"
   }
 }
